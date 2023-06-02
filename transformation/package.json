@@ -1,0 +1,29 @@
+{
+  "name": "transformation",
+  "version": "1.0.0",
+  "description": "transformation using wasm",
+  "main": "index.js",
+  "scripts": {
+    "test": "node tests",
+    "asbuild:debug": "asc assembly/index.ts --target debug --transform json-as/transform",
+    "asbuild:release": "asc assembly/index.ts --target release --transform json-as/transform",
+    "asbuild": "npm run asbuild:debug && npm run asbuild:release",
+    "start": "npx serve ."
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "assemblyscript": "^0.27.5"
+  },
+  "type": "module",
+  "exports": {
+    ".": {
+      "import": "./build/release.js",
+      "types": "./build/release.d.ts"
+    }
+  },
+  "dependencies": {
+    "json-as": "^0.5.36",
+    "visitor-as": "^0.11.4"
+  }
+}
